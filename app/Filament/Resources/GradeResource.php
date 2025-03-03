@@ -25,7 +25,7 @@ class GradeResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('student')
+                Forms\Components\Select::make('student_id')
                     ->relationship('student', 'full_name')
                     ->searchable()
                     ->preload()
@@ -37,7 +37,7 @@ class GradeResource extends Resource
                     ->preload()
                     ->required()
                     ->label('Mata Pelajaran'),
-                Forms\Components\Select::make('teacher')
+                Forms\Components\Select::make('teacher_id')
                     ->relationship('teacher', 'full_name')
                     ->searchable()
                     ->preload()
@@ -63,13 +63,13 @@ class GradeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('student')
+                Tables\Columns\TextColumn::make('student.full_name')
                     ->searchable()
                     ->label('Siswa'),
-                Tables\Columns\TextColumn::make('subject_id')
+                Tables\Columns\TextColumn::make('subject.name')
                     ->searchable()
                     ->label('Mata Pelajaran'),
-                Tables\Columns\TextColumn::make('teacher')
+                Tables\Columns\TextColumn::make('teacher.full_name')
                     ->searchable()
                     ->label('Guru'),
                 Tables\Columns\TextColumn::make('semester')
